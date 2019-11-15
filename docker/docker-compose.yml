@@ -4,7 +4,7 @@ services:
         image: postgres
         container_name: 'ts-sp-db'
         ports:
-            - "3306:3306"
+            - "3336:3306"
         environment:
             POSTGRES_DB: ${MYSQL_DATABASE}
             POSTGRES_USER: ${MYSQL_USER}
@@ -33,7 +33,7 @@ services:
         image: willdurand/elk
         container_name: 'ts-sp-elk'
         ports:
-            - "81:80"
+            - "8181:80"
         volumes:
             - ./elk/logstash:/etc/logstash:cached
             - ./elk/logstash/patterns:/opt/logstash/patterns:cached
