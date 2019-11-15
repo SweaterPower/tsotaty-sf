@@ -15,7 +15,11 @@ jobs:
     
     - name: Debug test
       working-directory: ./docker-symfony
-      run: pwd
+      run: ls
+    
+    - name: Start Docker containers
+      working-directory: ./docker-symfony
+      run: docker-compose.yml up -d
     
     - name: Start Docker containers
       working-directory: ./docker-symfony
