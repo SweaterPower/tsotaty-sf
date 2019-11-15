@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v1
     
     - name: Start Docker containers
-      working-directory: ${{ format('{0}', {{docker-dir}}) }}
+      working-directory: ${{ format('{0}', docker-dir) }}
       run: docker-compose up -d
 
     - name: Validate composer.json and composer.lock
