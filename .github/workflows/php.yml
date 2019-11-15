@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Docker symfony CI run unit tests
 
 on:
   push:
@@ -7,24 +7,23 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    name: docker-php-sf-build
     steps:
     - uses: actions/checkout@v1
     
-    - name: Start Docker containers
-      working-directory: ./docker
+    - name: Build docker containers
+      working-directory: './docker'
       run: docker-compose up -d
 
     - name: Validate composer.json and composer.lock
-      working-directory: ./docker
+      working-directory: './docker'
       run: docker-compose exec -T php composer validate
 
     - name: Install dependencies
-      working-directory: ./docker
+      working-directory: './docker'
       run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
-    
-    - name: Test action
-      working-directory: ./docker
+
+    - name: Run unit tests
+      working-directory: './docker'
       run: docker-compose exec -T php bin/phpunit
