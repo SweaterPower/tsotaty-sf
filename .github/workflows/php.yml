@@ -15,6 +15,9 @@ jobs:
     name: docker-php-sf-build
     steps:
     - uses: actions/checkout@v1
+      
+    - name: ENV TEST
+      run: echo $docker-dir
     
     - name: Start Docker containers
       working-directory: $docker-dir
