@@ -4,7 +4,7 @@ services:
         image: postgres
         container_name: 'ts-sp-db'
         ports:
-            - "3336:3306"
+            - "3336:3336"
         environment:
             POSTGRES_DB: ${MYSQL_DATABASE}
             POSTGRES_USER: ${MYSQL_USER}
