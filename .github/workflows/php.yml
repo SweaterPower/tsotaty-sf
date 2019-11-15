@@ -9,26 +9,21 @@ on:
 
 jobs:
   build:
-    env:
-      docker-dir: docker
     runs-on: ubuntu-latest
     name: docker-php-sf-build
     steps:
     - uses: actions/checkout@v1
-      
-    - name: ENV TEST
-      run: echo $docker-dir
     
-    - name: Start Docker containers
-      working-directory: $docker-dir
+    - name: Build docker containers
+      working-directory: './docker'
       run: docker-compose up -d
 
     - name: Validate composer.json and composer.lock
-      working-directory: $docker-dir
+      working-directory: './docker'
       run: docker-compose exec -T php composer validate
 
     - name: Install dependencies
-      working-directory: $docker-dir
+      working-directory: './docker'
       run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
     
   unit:
@@ -36,6 +31,6 @@ jobs:
     needs: [build]
     name: docker-php-sf-unit-tests
     steps:
-      - name: Test action
-        working-directory: $docker-dir
+      - name: Run unit tests
+        working-directory: './docker'
         run: docker-compose exec -T php bin/phpunit
