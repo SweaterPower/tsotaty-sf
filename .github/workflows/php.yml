@@ -1,6 +1,9 @@
 name: PHP Composer
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -9,12 +12,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    
+    - name: Start Docker containers
+      run: (cd docker-symfony/ && docker-compose up -d)
 
     - name: Validate composer.json and composer.lock
-      run: composer validate
+      run: (cd docker-symfony/ && docker-compose exec php composer validate)
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: (cd docker-symfony/ && docker-compose exec php composer install --prefer-dist --no-progress --no-suggest)
     
     - name: Test action
-      run: bin/console -V
+      run: (cd docker-symfony/ && docker-compose exec php bin/console -V)
