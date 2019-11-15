@@ -13,18 +13,22 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: Start Docker containers
-      run: docker-compose up -d
+    - name: Debug test
       working-directory: ./docker-symfony
+      run: pwd
+    
+    - name: Start Docker containers
+      working-directory: ./docker-symfony
+      run: docker-compose up -d
 
     - name: Validate composer.json and composer.lock
-      run: docker-compose exec php composer validate
       working-directory: ./docker-symfony
+      run: docker-compose exec php composer validate
 
     - name: Install dependencies
-      run: docker-compose exec php composer install --prefer-dist --no-progress --no-suggest
       working-directory: ./docker-symfony
+      run: docker-compose exec php composer install --prefer-dist --no-progress --no-suggest
     
     - name: Test action
-      run: docker-compose exec php bin/console -V
       working-directory: ./docker-symfony
+      run: docker-compose exec php bin/console -V
