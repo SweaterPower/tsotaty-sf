@@ -19,12 +19,12 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       working-directory: ./docker
-      run: docker-compose exec php composer validate
+      run: docker-compose exec -T php composer validate
 
     - name: Install dependencies
       working-directory: ./docker
-      run: docker-compose exec php composer install --prefer-dist --no-progress --no-suggest
+      run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
     
     - name: Test action
       working-directory: ./docker
-      run: docker-compose exec php bin/console -V
+      run: docker-compose exec -T php bin/console -V
