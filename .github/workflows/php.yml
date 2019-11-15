@@ -27,4 +27,4 @@ jobs:
     
     - name: Test action
       working-directory: ./docker
-      run: docker-compose exec -T php bin/console -V
+      run: docker-compose exec -T php bin/phpunit
