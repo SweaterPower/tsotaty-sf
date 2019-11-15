@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Debug action
-      run: pwd
+      run: ls
 
     - name: Validate composer.json and composer.lock
       run: composer validate
