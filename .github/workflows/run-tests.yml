@@ -15,15 +15,15 @@ jobs:
       id: cache
       uses: actions/cache@v1
       with:
-        path: ./.github/cache
+        path: ./docker
         key: docker-build-test-key
-    - name: Run unit tests
-      working-directory: './docker'
-      if: steps.cache.outputs.cache-hit == 'true'
-      run: docker-compose exec -T php bin/phpunit
     - name: Rebuild docker
       working-directory: './docker'
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
         docker-compose up -d
         docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
+    - name: Run unit tests
+      working-directory: './docker'
+      if: steps.cache.outputs.cache-hit == 'true'
+      run: docker-compose exec -T php bin/phpunit

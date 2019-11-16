@@ -17,7 +17,7 @@ jobs:
     - name: Cache docker build
       uses: actions/cache@v1
       with:
-        path: ./.github/cache
+        path: ./docker
         key: docker-build-test-key
     
     - name: Build docker containers
