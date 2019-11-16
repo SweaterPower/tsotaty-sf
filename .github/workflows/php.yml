@@ -12,6 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
+    - name: Cache docker build
+      uses: actions/cache@v1
+      with:
+        path: ./.github/cache
+        key: docker-build-test-key
+    
     - name: Build docker containers
       working-directory: './docker'
       run: docker-compose up -d
@@ -23,7 +29,12 @@ jobs:
     - name: Install dependencies
       working-directory: './docker'
       run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
-
+      
+  unit:
+    runs-on: ubuntu-latest
+    name: docker-php-sf-unit
+    needs: [build]
+    steps:
     - name: Run unit tests
       working-directory: './docker'
       run: docker-compose exec -T php bin/phpunit
