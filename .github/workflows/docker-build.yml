@@ -1,9 +1,11 @@
-name: Docker symfony CI run unit tests
+name: Run tests
 
 on:
   push:
-    branches: 
-      - master
+    paths:
+    - './docker/**'
+    - './composer.json'
+    - './composer.lock'
 
 jobs:
   build:
@@ -29,12 +31,3 @@ jobs:
     - name: Install dependencies
       working-directory: './docker'
       run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
-      
-  unit:
-    runs-on: ubuntu-latest
-    name: docker-php-sf-unit
-    needs: [build]
-    steps:
-    - name: Run unit tests
-      working-directory: './docker'
-      run: docker-compose exec -T php bin/phpunit
