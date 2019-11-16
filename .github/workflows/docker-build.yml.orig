@@ -1,0 +1,35 @@
+# name: Build docker
+
+# on:
+#   push:
+#     branches: 
+#       - master
+#     paths:
+#     - './docker/**'
+#     - './composer.json'
+#     - './composer.lock'
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     name: docker-php-sf-build
+#     steps:
+#     - uses: actions/checkout@v1
+    
+#     - name: Cache docker build
+#       uses: actions/cache@v1
+#       with:
+#         path: ./docker
+#         key: docker-build-test-key
+    
+#     - name: Build docker containers
+#       working-directory: './docker'
+#       run: docker-compose up -d
+
+#     - name: Validate composer.json and composer.lock
+#       working-directory: './docker'
+#       run: docker-compose exec -T php composer validate
+
+#     - name: Install dependencies
+#       working-directory: './docker'
+#       run: docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest

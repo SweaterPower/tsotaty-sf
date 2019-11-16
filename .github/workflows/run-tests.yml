@@ -11,19 +11,13 @@ jobs:
     name: docker-php-sf-unit
     steps:
     - uses: actions/checkout@v1
-    - name: Cache docker build
-      id: cache
-      uses: actions/cache@v1
-      with:
-        path: ./docker
-        key: docker-build-test-key
-    - name: Rebuild docker
+    
+    - name: Build docker
       working-directory: './docker'
-      if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        docker-compose up -d
+        docker-compose up -d --no-build
         docker-compose exec -T php composer install --prefer-dist --no-progress --no-suggest
+
     - name: Run unit tests
       working-directory: './docker'
-      if: steps.cache.outputs.cache-hit == 'true'
       run: docker-compose exec -T php bin/phpunit
