@@ -6,9 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class GithubCITest extends TestCase
 {
-    public function testCI()
+    public function testCItrue()
     {
-        echo '[!] Github rofloCI test [!]';
         $this->assertTrue(true);
+    }
+
+    public function testCIfalse()
+    {
+        $this->assertTrue(false);
     }
 }

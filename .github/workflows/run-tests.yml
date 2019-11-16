@@ -20,4 +20,7 @@ jobs:
 
     - name: Run unit tests
       working-directory: './docker'
-      run: docker-compose exec -T php bin/phpunit
+      run: |
+        docker-compose exec -T php bin/console -n doctrine:migrations:migrate
+        docker-compose exec -T php bin/console -n doctrine:fixtures:load
+        docker-compose exec -T php bin/phpunit
