@@ -11,7 +11,7 @@ jobs:
     name: docker-php-sf-unit
     steps:
     - uses: actions/checkout@v1
-    - uses: ./.github/actions/docker-build
+    - uses: .github/actions/docker-build
     - name: Run unit tests
       working-directory: './docker'
       run: docker-compose exec -T php bin/phpunit
