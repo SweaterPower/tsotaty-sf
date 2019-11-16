@@ -11,17 +11,12 @@ jobs:
     name: docker-php-sf-unit
     steps:
     - uses: actions/checkout@v1
-<<<<<<< HEAD
     - name: Cache docker build
       id: cache
       uses: actions/cache@v1
       with:
         path: ./.github/cache
         key: docker-build-test-key
-=======
-    - name: Run docker build
-      uses: ./.github/actions/docker-build
->>>>>>> 0dd5b7f759d37adb3fa93861f4624beb91ea171b
     - name: Run unit tests
       working-directory: './docker'
       if: steps.cache.outputs.cache-hit == 'true'
