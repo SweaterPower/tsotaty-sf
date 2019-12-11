@@ -7,3 +7,7 @@
 172.20.0.1 - - [15/Nov/2019:10:00:52 +0000] "GET /_wdt/9a27ba HTTP/1.1" 200 3451 "http://symfony.localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
 172.22.0.1 - - [15/Nov/2019:12:32:46 +0000] "GET / HTTP/1.1" 404 13844 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
 172.22.0.1 - - [15/Nov/2019:12:32:46 +0000] "GET /_wdt/5468ac HTTP/1.1" 200 3442 "http://symfony.localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
+172.18.0.1 - - [20/Nov/2019:09:54:11 +0000] "GET /_wdt/5468ac HTTP/1.1" 499 0 "http://symfony.localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
+172.18.0.1 - - [20/Nov/2019:09:54:11 +0000] "GET /favicon.ico HTTP/1.1" 499 0 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
+172.19.0.1 - - [11/Dec/2019:06:19:35 +0000] "GET / HTTP/1.1" 404 13847 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0"
+172.19.0.1 - - [11/Dec/2019:06:19:35 +0000] "GET /_wdt/ff8627 HTTP/1.1" 200 3449 "http://symfony.localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0"

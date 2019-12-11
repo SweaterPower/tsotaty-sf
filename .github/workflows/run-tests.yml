@@ -23,4 +23,4 @@ jobs:
       run: |
         docker-compose exec -T php bin/console -n doctrine:migrations:migrate
         docker-compose exec -T php bin/console -n doctrine:fixtures:load
-        docker-compose exec -T php bin/phpunit
+        docker-compose exec -T php php vendor/bin/codecept run
