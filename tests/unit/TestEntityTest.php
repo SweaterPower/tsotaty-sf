@@ -20,8 +20,7 @@ class TestEntityTest extends \Codeception\Test\Unit
     // tests
     public function testSampleField1()
     {
-        /** @var Doctrine\ORM\EntityManager */
+        /** @var EntityManager */
         $em = $this->getModule('Doctrine2')->em;
-        
     }
 }
